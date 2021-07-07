@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AccountManager.Models.Sword>
+
+@{
+    ViewBag.Title = "EditHead";
+}
+
+<h2>Изменить снаряжение</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="card col-lg-3 shadow">
+                <img class="img-thumbnail mt-3" src="../Content/images/@(item.SwordName).png" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title col-form-label-lg pt-0">@item.SwordName</h4>
+                    <p class="card-text">
+                        Показатель урона: @item.Damage
+                    </p>
+                    @if (item.SwordId == ViewBag.Player.Character.SwordId)
+                    {
+
+                    }
+                    else
+                    {
+                        //@Html.ActionLink("hello", "EditHeadNow", new {model = 4})
+                        //<input type="submit" value="Создать аккаунт" class="btn btn-default" />
+                        <a href="EditSwordNow?id=@item.SwordId" class="btn btn-primary">Изменить</a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+}

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<AccountManager.Models.Clan>
+
+@{
+    ViewBag.Title = "ClanList";
+}
+
+<h2>Список кланов:</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="card col-lg-3 shadow">
+                <div class="card-body">
+                    <h4 class="card-title col-form-label-lg pt-0">@item.ClanName</h4>
+                    <p class="card-text">
+                        Лидер клана: @item.ClanLeader.Username
+                        Количество участников: @item.Followers.Count
+                        Рейтинг клана: @item.ClanRaiting
+                    </p>
+                    <a href="ClanJoinNow?id=@item.ClanId" class="btn btn-primary">Вступить</a>
+                </div>
+            </div>
+        }
+    </div>
+
+}
